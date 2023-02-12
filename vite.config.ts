@@ -12,9 +12,12 @@ import * as packageJson from './package.json'
 export default defineConfig((configEnv) => ({
   plugins: [
     react(),
-    tsConfigPaths(),
+    tsConfigPaths({
+      root: 'src',
+    }),
     linterPlugin({
       include: ['./src}/**/*.{ts,tsx}'],
+      exclude: ['./src}/example/**/*.{ts,tsx}'],
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
