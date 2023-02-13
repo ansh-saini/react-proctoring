@@ -4,15 +4,15 @@ type Props = {
   disabled?: boolean
 }
 
-export function useTabUnfocusDetection({ disabled }: Props = { disabled: false }) {
-  const [tabUnfocusStatus, setTabUnfocusStatus] = useState(false)
+export function useTabFocusDetection({ disabled }: Props = { disabled: false }) {
+  const [tabFocusStatus, setTabFocusStatus] = useState(true)
 
   /**
    * Tab Un-Focus:
    * When page goes out of focus/visibility set tab unfocus status true
    */
   const visibilityChange = useCallback(() => {
-    setTabUnfocusStatus(document.hidden)
+    setTabFocusStatus(!document.hidden)
   }, [])
 
   useEffect(() => {
@@ -57,8 +57,7 @@ export function useTabUnfocusDetection({ disabled }: Props = { disabled: false }
 
       // change flag value
       isVisible = true
-      setTabUnfocusStatus(false)
-      console.log('visible')
+      setTabFocusStatus(true)
     }
 
     function onHidden() {
@@ -69,8 +68,7 @@ export function useTabUnfocusDetection({ disabled }: Props = { disabled: false }
 
       // change flag value
       isVisible = false
-      setTabUnfocusStatus(true)
-      console.log('hidden')
+      setTabFocusStatus(false)
     }
 
     function handleVisibilityChange(forcedFlag: unknown) {
@@ -134,5 +132,5 @@ export function useTabUnfocusDetection({ disabled }: Props = { disabled: false }
     }
   }, [])
 
-  return { tabUnfocusStatus } as const
+  return { tabFocusStatus } as const
 }

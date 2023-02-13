@@ -5,7 +5,7 @@
 // import { useIntersectionObserver } from './hooks/useIntersectionObserver'
 import { useProctoring } from './hooks/useProctoring'
 // import { useSelectionDisable } from './hooks/useSelectionDisable'
-// import { useTabUnfocusDetection } from './hooks/useTabUnfocusDetection'
+// import { useTabFocusDetection } from './hooks/useTabFocusDetection'
 
 export {
   //   useCopyDisable,
@@ -15,5 +15,5 @@ export {
   //   useIntersectionObserver,
   useProctoring,
   //   useSelectionDisable,
-  //   useTabUnfocusDetection,
+  //   useTabFocusDetection,
 }

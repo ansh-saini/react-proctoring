@@ -4,24 +4,24 @@ import {
   FullScreenStatus,
   triggerFullscreen,
   useFullScreenDetection,
-} from "./useFullScreenDetection";
-import { useTabUnfocusDetection } from "./useTabUnfocusDetection";
-import { useCopyDisable } from "./useCopyDisable";
-import { useDisableContextMenu } from "./useDisableContextMenu";
-import { useSelectionDisable } from "./useSelectionDisable";
+} from './useFullScreenDetection'
+import { useTabFocusDetection } from './useTabFocusDetection'
+import { useCopyDisable } from './useCopyDisable'
+import { useDisableContextMenu } from './useDisableContextMenu'
+import { useSelectionDisable } from './useSelectionDisable'
 
 type Props = {
-  preventContextMenu?: boolean;
-  preventUserSelection?: boolean;
-  preventCopy?: boolean;
-  forceFullScreen?: boolean;
-  preventTabSwitch?: boolean;
-};
+  preventContextMenu?: boolean
+  preventUserSelection?: boolean
+  preventCopy?: boolean
+  forceFullScreen?: boolean
+  preventTabSwitch?: boolean
+}
 
 export type ProctoringData = {
-  fullScreen: { status: FullScreenStatus; trigger: VoidFunction };
-  tabUnfocus: { status: boolean };
-};
+  fullScreen: { status: FullScreenStatus; trigger: VoidFunction }
+  tabFocus: { status: boolean }
+}
 
 export function useProctoring({
   preventTabSwitch = false,
@@ -30,10 +30,10 @@ export function useProctoring({
   preventUserSelection = false,
   preventCopy = false,
 }: Props) {
-  useDisableContextMenu({ disabled: preventContextMenu === false });
+  useDisableContextMenu({ disabled: preventContextMenu === false })
 
-  useCopyDisable({ disabled: preventCopy === false });
-  useSelectionDisable({ disabled: preventUserSelection === false });
+  useCopyDisable({ disabled: preventCopy === false })
+  useSelectionDisable({ disabled: preventUserSelection === false })
 
   // TODO: Future work
   // const { webCamStatus, videoRef, replayVideo } = useCamDetection({
@@ -42,16 +42,16 @@ export function useProctoring({
 
   // Disabled devtools detection
   // const { devToolsOpen } = useDevToolDetection({ disabled: true })
-  const { tabUnfocusStatus } = useTabUnfocusDetection({
+  const { tabFocusStatus } = useTabFocusDetection({
     disabled: preventTabSwitch === false,
-  });
-  console.log(tabUnfocusStatus, "from proctoring");
+  })
+  console.log(tabFocusStatus, 'from proctoring')
   const { fullScreenStatus } = useFullScreenDetection({
     disabled: forceFullScreen === false,
-  });
+  })
 
   return {
     fullScreen: { status: fullScreenStatus, trigger: triggerFullscreen },
-    tabUnfocus: { status: tabUnfocusStatus },
-  } as const;
+    tabFocus: { status: tabFocusStatus },
+  } as const
 }
