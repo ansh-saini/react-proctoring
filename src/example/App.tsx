@@ -10,8 +10,8 @@ function App() {
   const [examHasStarted, setExamHasStarted] = useState(false)
 
   const { fullScreen, tabFocus } = useProctoring({
-    forceFullScreen: false,
-    preventTabSwitch: false,
+    forceFullScreen: true,
+    preventTabSwitch: true,
     preventContextMenu: true,
     preventUserSelection: true,
     preventCopy: true,
