@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:example": "tsc && vite build -c example.vite.config.ts",
-    "preview": "vite preview"
+    "build:example": "tsc && vite build -c example.vite.config.ts"
   },
   "files": [
     "dist"
@@ -35,9 +34,9 @@
   },
   "author": "Ansh Saini",
   "bugs": {
-    "url": "https://github.com/bigyanpoudel/react-proctoring/issues"
+    "url": "https://github.com/ansh-saini/react-proctoring/issues"
   },
-  "homepage": "https://github.com/bigyanpoudel/react-proctoring#readme",
+  "homepage": "https://github.com/ansh-saini/react-proctoring#readme",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.13.0",
